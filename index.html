@@ -95,46 +95,26 @@
     <div class="container">
         <div class="title">Alert! Test Page</div>
         <div class="caution">
-            <p><strong>Instructions for testing: POINT QUERY CURRENT USER IS CERTAIN Ads Account ID and Page ID. </strong></p>
-            <p><strong>
-                This user input is solely for testing purposes. As you will be testing with your test Ads Account ID and Page ID, which you have not provided, the Generate button will create the necessary link directly for your Ads Account ID and Page ID. However, to facilitate cross-site leak testing, we as a attacker can already place all the necessary information to determine whether the current user is indeed the correct Ads Account ID and Page ID, are you able to understand if not ask in the original report.
-            </strong></p>
-            <ol>
-                <li><strong>Enter your Ads Account ID</strong> and <strong>Page ID</strong> that you want to test with(Eg. put one time incorrect and another time correct ids).</li>
-                <li>Enter a <strong>Unique Word</strong> of your choice (e.g., a random string,like: incorrect,correct or simply put uid).</li>
-                <li>Provide your <strong>Webhook URL</strong> where the trigger will be sent if the Ads Account ID and Page ID matched to current logged in victim.</li>
-                <li>Click the <strong>Generate</strong> button to create the test link.</li>
-                <li>Visit the generated link while logged in as the victim with the specified Ads Account ID and Page ID.</li>
-                <li>
-                   If you didn't change the webhook link I have kept below. Once triggered, I will reply with the <strong>Unique Word</strong> you entered while logged in as the victim having the Ads Account ID and Page ID to point query if the current user is a certain Ads Account ID and Page ID (cross-site leak). But for testing, do anyway you like.
-                </li>
-                <li>
-                    Remember in this modified POC, webhook <strong>takes some minutes</strong> to reflect trigger since it first passes through mine website's redirector. The fact is trigger to webhook will be received only when point query matches the current user, otherwise not.  
-                    So check after <strong>10 minutes</strong>; webhook trigger will be there with the unique word you put while you test logged in as correct victim. And there will not be webhook trigger with the unique word while you tested logged in as an incorrect victim. By this way, trigger will be less and only when logged in as correct victim. Thus smooth POINT QUERY if current user has certain Ads Account ID and Page ID or not.
-                </li>
-                <li>Victim <strong>just need to go to the link and doesn't need to do or click anything, As a victim you can close that tab just some seconds after opening, No any further action needed.</strong> The facebook server's are triggering not from cilent side, so victim just need to go to the link once, no further action from victim.The <strong>10 minutes</strong> wait time is for attacker webhook trigger by server side.</li>
-                <li>In this POC i modified such that webhook will be triggered only if <strong>Ads Account ID and Page ID matched to current logged in victim.</strong>By using my own website at intermediate before webhook.And webhook will be triggered only when <strong>CORRECT VICTIM goes to link WITH their Ads Account ID and Page ID which attacker planted.</strong>Thus easy cross site point query.</li>
-                <li><strong>Generate Link</strong> button is Below.Clicking will show link for required ids. Which you can <strong>Copy and Test or Click Go To Link</strong> for testing.</li>
-            </ol>
+            <p><strong>Instructions for testing: Server Side : QUERY IF UID IS ADMIN OF PAGE</strong></p>
+            <p>If correct UID and PAGE ID: > 4 callback in webhook.</p>
+            <p>If wrong UID and PAGE ID: <2 callback in webhook. </p>
         </div>
         <form id="linkForm">
             <div class="input-group">
-                <label for="adsAccountId">Ads Account ID. I have set a value that I control, but you can change it.</label>
-                <input type="text" id="adsAccountId" placeholder="Enter Ads Account ID" value="289771427800034" required>
+                <label for="adsAccountId">ADMIN UID.</label>
+                <input type="text" id="adsAccountId" placeholder="Enter Ads Account ID" required>
             </div>
             <div class="input-group">
-                <label for="pageId">Page ID. I have set a value that I control, but you can change it.</label>
-                <input type="text" id="pageId" placeholder="Enter Page ID" value="100054398251546" required>
+                <label for="pageId">Page ID.</label>
+                <input type="text" id="pageId" placeholder="Enter Page ID" required>
             </div>
             <div class="input-group">
-                <label for="uniqueWord">Your Unique Word for Each time. I have set a value that I control, but you can change it. OR type uid</label>
-                <input type="text" id="uniqueWord" placeholder="Enter Your Unique Word" value="100003015376653" required>
+                <label for="uniqueWord">Your Unique Word for Each time.</label>
+                <input type="text" id="uniqueWord" placeholder="Enter Your Unique Word" required>
             </div>
             <div class="input-group">
-                <label for="webhookUrl">Webhook URL. I have set a value that I control, but you can change it.</label>
-                <input type="url" id="webhookUrl" placeholder="Enter Webhook URL"
-                    value="webhook.site/f0f94b63-bf5d-4a97-b756-f8b4c3aa0755" 
-                    required
+                <label for="webhookUrl">Webhook URL.</label>
+                <input type="url" id="webhookUrl" placeholder="Enter Webhook URL" required
                     oninput="this.value = this.value.replace(/^https?:\/\//, '')">
             </div>
             <div class="btn-container">
